@@ -29,7 +29,7 @@ class OrderServiceTest {
 
         val total = service.calculateTotal(cart)
 
-        assertEquals(513, total.amount)
+        assertEquals(491, total.amount)
         assertEquals("RUB", total.currency)
     }
 }

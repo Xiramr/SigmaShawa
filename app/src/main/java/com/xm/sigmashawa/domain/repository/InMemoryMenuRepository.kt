@@ -5,21 +5,33 @@ import com.xm.sigmashawa.domain.model.Product
 import com.xm.sigmashawa.domain.model.Size
 
 class InMemoryMenuRepository : MenuRepository {
+
     private val menu: List<Product> = listOf(
+
         Product.Shawarma(
             id = "sh1",
             title = "Sigma Classic",
             size = Size.MEDIUM,
-            spicyLevel = 1,
-            base = Money(220)
+            prices = mapOf(
+                Size.SMALL to Money(200),
+                Size.MEDIUM to Money(240),
+                Size.LARGE to Money(290)
+            ),
+            spicyLevel = 1
         ),
+
         Product.Shawarma(
             id = "sh2",
             title = "Sigma Hot",
             size = Size.LARGE,
-            spicyLevel = 3,
-            base = Money(270)
+            prices = mapOf(
+                Size.SMALL to Money(220),
+                Size.MEDIUM to Money(260),
+                Size.LARGE to Money(320)
+            ),
+            spicyLevel = 3
         ),
+
         Product.Drink(
             id = "dr1",
             title = "Cola",

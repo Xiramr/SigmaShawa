@@ -5,14 +5,8 @@ import com.xm.sigmashawa.domain.model.*
 fun CartItem.price(): Money {
     val base = product.basePrice()
     val extrasSum = extras.sumOf { it.extraPrice } * count
-
-    val multiplier = when (product) {
-        is Product.Shawarma -> product.size.priceMultiplier
-        is Product.Drink -> 1.0
-    }
-
-    val baseWithMultiplier = (base.amount * multiplier).toInt() * count
-    return Money(baseWithMultiplier + extrasSum, base.currency)
+    val totalBase = base.amount * count
+    return Money(totalBase + extrasSum, base.currency)
 }
 
 fun List<CartItem>.total(): Money =

@@ -10,10 +10,14 @@ sealed class Product(
         override val id: String,
         override val title: String,
         val size: Size,
-        val spicyLevel: Int,
-        val base: Money
+        val prices: Map<Size, Money>,
+        val spicyLevel: Int
     ) : Product(id, title) {
-        override fun basePrice(): Money = base
+
+        override fun basePrice(): Money {
+            return prices[size]
+                ?: throw IllegalStateException("Price for size $size not found")
+        }
     }
 
     data class Drink(

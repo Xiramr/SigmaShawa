@@ -150,6 +150,7 @@ fun SigmaShawaScreen(
                 Row(modifier = Modifier.padding(16.dp)) {
                     Text("В корзине:", fontWeight = FontWeight.Medium, modifier = Modifier.weight(1f))
                     Text(
+
                         text = "$cartCount шт",
                         fontWeight = FontWeight.Black,
                         color = MacYellow

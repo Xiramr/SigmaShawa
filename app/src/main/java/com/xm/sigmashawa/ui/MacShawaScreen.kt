@@ -20,6 +20,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -44,6 +45,7 @@ private val MacYellow = Color(0xFFF2B705)
 @Composable
 fun SigmaShawaScreen(
     modifier: Modifier = Modifier,
+    onOpenNetworkScreen: () -> Unit = {},
     orderService: OrderService = remember { OrderService(InMemoryMenuRepository()) }
 ) {
     var productId by rememberSaveable { mutableStateOf("sh1") }
@@ -64,6 +66,11 @@ fun SigmaShawaScreen(
                         fontWeight = FontWeight.Black,
                         color = MacGreen
                     )
+                },
+                actions = {
+                    TextButton(onClick = onOpenNetworkScreen) {
+                        Text("API")
+                    }
                 }
             )
         },
